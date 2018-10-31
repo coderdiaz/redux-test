@@ -1,17 +1,28 @@
 import React from 'react'
-import {deleteArticle} from '../actions'
+import {deleteArticle, doneArticle} from '../actions'
 import { connect } from 'react-redux'
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteArticle: article => dispatch(deleteArticle(article))
+        deleteArticle: article => dispatch(deleteArticle(article)),
+        doneArticle: article => dispatch(doneArticle(article))
     };
 };
 
-const ConnectedItem = ({article, deleteArticle}) => (
-    <li className="list-group-item">
+const ConnectedItem = ({article, deleteArticle, doneArticle}) => (
+    <li
+        className="list-group-item"
+        style={{textDecoration: doneArticle ? 'line-through' : 'none'}}>
         {article.title}
-        <button onClick={deleteArticle.bind(this, article)}>Delete Article</button>
+        <button
+            className="ml-2"
+            onClick={deleteArticle.bind(this, article)}>
+            Delete Article
+        </button>
+        <input
+            className="ml-2"
+            type="checkbox" name="" id="check-box" 
+            onClick={doneArticle.bind(this, article)} />
     </li>
 )
 
