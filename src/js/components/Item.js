@@ -10,9 +10,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const ConnectedItem = ({article, deleteArticle, doneArticle}) => (
-    <li
-        className="list-group-item"
-        style={{textDecoration: doneArticle ? 'line-through' : 'none'}}>
+    <li className="list-group-item">
         {article.title}
         <button
             className="ml-2"
